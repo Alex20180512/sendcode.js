@@ -1,5 +1,6 @@
 export interface SendCodeOptions {
   wait?: number;
+  customText?: (wait: number) => string;
   onEnd?: () => void;
 }
 
@@ -37,7 +38,9 @@ export class SendCode {
         }
         return;
       }
-      container.textContent = `重新发送（${wait}s）`;
+      container.textContent = this.options.customText
+        ? this.options.customText(wait)
+        : `重新发送（${wait}s）`;
       wait--;
       this.timer = window.setTimeout(action, 1000);
     };

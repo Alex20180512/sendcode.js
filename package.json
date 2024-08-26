@@ -1,8 +1,7 @@
 {
   "name": "sendcode.js",
   "type": "module",
-  "version": "0.0.0",
-  "packageManager": "pnpm@9.1.0",
+  "version": "0.0.1",
   "description": "_description_",
   "license": "MIT",
   "keywords": [],
@@ -29,11 +28,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
+    "build": "npm run test && unbuild",
     "start": "npm run start:dev",
     "start:dev": "esno watch src/index.ts",
     "start:prod": "pnpm install && pnpm build && node dist/index.mjs",
-    "test": "vitest",
+    "test": "vitest --run",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
@@ -41,6 +40,7 @@
     "@types/node": "^20.12.7",
     "bumpp": "^9.4.0",
     "esno": "^4.7.0",
+    "jsdom": "^25.0.0",
     "pnpm": "^9.0.2",
     "rimraf": "^5.0.5",
     "simple-git-hooks": "^2.11.1",
